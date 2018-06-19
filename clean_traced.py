@@ -23,18 +23,6 @@ if __name__ == "__main__":
     with open(input_path, "r") as f:
         data = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
 
-    # Filter duplicate entries
-    # Take an arbitrary message from each person
-    # TODO: Find out how AVF would actually like us to export data in this situation
-    # TODO: (multiple messages from the same respondent)
-    seen_ids = set()
-    filtered_messages = []
-    for td in data:
-        if td["avf_phone_id"] not in seen_ids:
-            seen_ids.add(td["avf_phone_id"])
-            filtered_messages.append(td)
-    data = filtered_messages
-
     # Clean survey
     # Cleaners.clean_traced_data_iterable(user, data, [
     #     {"raw": "GENDER_R", "cleaners": swahili.DemographicCleaner.clean_gender},
@@ -54,7 +42,7 @@ if __name__ == "__main__":
     if not os.path.exists(interface_output_directory):
         os.makedirs(interface_output_directory)
     TracedDataTheInterfaceIO.export_traced_data_iterable_to_the_interface(
-        data, interface_output_directory, "avf_phone_id", "Message", "upload_date")
+        data, interface_output_directory, "avf_phone_id", "Message", "Date")
 
     # Write Coda output
     # if os.path.dirname(coda_output_path) is not "" and not os.path.exists(os.path.dirname(coda_output_path)):
