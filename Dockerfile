@@ -30,6 +30,6 @@ ADD . /app
 # Make a directory for intermediate data
 RUN mkdir /app/data
 
-# USER and GENDER_COL are environment variables which need to be set when constructing this container e.g. via
+# USER is an environment variable which needs to be set when constructing this container e.g. via
 # docker run or docker container create. Use docker-run.sh to set these automatically.
 CMD pipenv run python clean_traced.py "$USER" data/input.json data/output.json data/interface_export
