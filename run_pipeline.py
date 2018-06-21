@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from core_data_modules.traced_data.io import TracedDataJsonIO, TracedDataTheInterfaceIO
+from core_data_modules.traced_data.io import TracedDataJsonIO, TracedDataTheInterfaceIO, TracedDataCSVIO
 from dateutil.parser import isoparse
 
 if __name__ == "__main__":
@@ -12,12 +12,15 @@ if __name__ == "__main__":
                         help="Path to write results of cleaning to", nargs=1)
     parser.add_argument("interface_output", metavar="interface-output",
                         help="Directory to write The Interface files to", nargs=1)
+    parser.add_argument("csv_output", metavar="csv-output",
+                        help="File to write messages CSV to", nargs=1)
 
     args = parser.parse_args()
     user = args.user[0]
     input_path = args.input[0]
     json_output_path = args.json_output[0]
     interface_output_directory = args.interface_output[0]
+    csv_output_path = args.csv_output[0]
 
     # Time range of messages to keep. Messages outside of this range will be dropped.
     # Inclusive lower-bound, exclusive upper-bound
@@ -47,3 +50,11 @@ if __name__ == "__main__":
         os.makedirs(interface_output_directory)
     TracedDataTheInterfaceIO.export_traced_data_iterable_to_the_interface(
         data, interface_output_directory, "avf_phone_id", "Message", "Date")
+
+    # Write CSV output
+    if os.path.dirname(csv_output_path) is not "" and not os.path.exists(os.path.dirname(csv_output_path)):
+        os.makedirs(os.path.dirname(csv_output_path))
+    with open(csv_output_path, "w") as f:
+        TracedDataCSVIO.export_traced_data_iterable_to_csv(
+            data, f,
+            headers=["avf_message_id", "avf_phone_id", "Date", "Message"])
