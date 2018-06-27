@@ -32,4 +32,4 @@ RUN mkdir /app/data
 
 # USER is an environment variable which needs to be set when constructing this container e.g. via
 # docker run or docker container create. Use docker-run.sh to set these automatically.
-CMD pipenv run python survey_pipeline.py "$USER" data/input.json data/output.json
+CMD pipenv run python survey_pipeline.py "$USER" data/input.json data/output.json data/coda
