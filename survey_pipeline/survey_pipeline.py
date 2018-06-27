@@ -55,7 +55,9 @@ if __name__ == "__main__":
             data, "AGE_R", "AGE_R_clean", "Age", f)
 
     with open(path.join(coda_output_directory, "location.csv"), "w") as f:
-        TracedDataCodaIO.export_traced_data_iterable_to_coda(data, "LOCATION_R", f)
+        TracedDataCodaIO.export_traced_data_iterable_to_coda(
+            data, "LOCATION_R", f)
 
     with open(path.join(coda_output_directory, "nationality.csv"), "w") as f:
-        TracedDataCodaIO.export_traced_data_iterable_to_coda(data, "NATIONALITY_R", f)
+        TracedDataCodaIO.export_traced_data_iterable_to_coda(
+            data, "NATIONALITY_R", f)
