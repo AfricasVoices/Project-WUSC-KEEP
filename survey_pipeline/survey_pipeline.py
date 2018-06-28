@@ -78,9 +78,9 @@ if __name__ == "__main__":
             data, "AGE_R", "AGE_R_clean", f)
 
     with open(path.join(coding_csv_output_directory, "location.csv"), "w") as f:
-        TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv(
-            data, "LOCATION_R", f)
+        TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
+            data, "LOCATION_R", "LOCATION_R_clean", f)
 
     with open(path.join(coding_csv_output_directory, "nationality.csv"), "w") as f:
-        TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv(
-            data, "NATIONALITY_R", f)
+        TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
+            data, "NATIONALITY_R", "NATIONALITY_R_clean", f)
