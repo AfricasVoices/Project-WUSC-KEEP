@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "42f5d5829a86da370217d1c0567f25ac7f6e488cd7a17bd0713f4f8cdd98fa7d"
+            "sha256": "a8debc1661e65bcdbaaacafe9574f13af0a5f8de4a168d569e5ff2eb19f5b919"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -19,7 +19,7 @@
         "coredatamodules": {
             "editable": true,
             "git": "ssh://git@github.com/AfricasVoices/CoreDataModules.git",
-            "ref": "8df8f34cd41666c717876a54b173c81efb739167"
+            "ref": "72a7bc97c554322e905eeeee0b16a38b54b3dbd6"
         },
         "deprecation": {
             "hashes": [
