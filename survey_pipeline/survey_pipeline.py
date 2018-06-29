@@ -8,7 +8,7 @@ from core_data_modules.traced_data import Metadata
 from core_data_modules.traced_data.io import TracedDataJsonIO, TracedDataCodaIO
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Cleans a list of TracedData items")
+    parser = argparse.ArgumentParser(description="Cleans a Swahili survey and exports results to Coda.")
     parser.add_argument("user", help="User launching this program", nargs=1)
     parser.add_argument("input", help="Path to input file, containing a list of TracedData objects as JSON", nargs=1)
     parser.add_argument("json_output", metavar="json-output",
