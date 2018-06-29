@@ -16,8 +16,6 @@ if __name__ == "__main__":
     parser.add_argument("json_output", metavar="json-output",
                         help="Path to a JSON file to write results of cleaning to", nargs=1)
 
-    # TODO: If setting a coding_mode option here, should we also have one in the survey_auto_code stage?
-
     args = parser.parse_args()
     user = args.user[0]
     input_path = args.input[0]
