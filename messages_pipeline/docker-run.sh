@@ -22,11 +22,11 @@ function finish {
 }
 trap finish EXIT
 
-# Build an image for this project, called "wusc-keep".
-docker build -t wusc-keep .
+# Build an image for this project, called "wusc-keep-messages".
+docker build -t wusc-keep-messages .
 
 # Create a container from the image that was just built.
-container="$(docker container create --env USER="$USER" wusc-keep)"
+container="$(docker container create --env USER="$USER" wusc-keep-messages)"
 
 # Copy input data into the container
 docker cp "$INPUT_FILE" "$container:/app/data/input.json"

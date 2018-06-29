@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+CoreDataModules = {git = "ssh://git@github.com/AfricasVoices/CoreDataModules.git", editable = true, ref = "v0.2.2"}
+jsonpickle = "*"
+python-dateutil = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
