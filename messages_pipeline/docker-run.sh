@@ -19,8 +19,8 @@ docker build -t wusc-keep-messages .
 container="$(docker container create --env USER="$USER" wusc-keep-messages)"
 
 function finish {
-	# Tear down the container when done.
-	docker container rm "$container" >/dev/null
+    # Tear down the container when done.
+    docker container rm "$container" >/dev/null
 }
 trap finish EXIT
 
