@@ -45,6 +45,7 @@ if __name__ == "__main__":
             data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
                 user, data, "NATIONALITY_R", "NATIONALITY_R_clean", f, True))
     else:
+        assert coding_mode == "coding-csv", "coding_mode was not one of 'coda' or 'coding-csv'"
         # Merge manually coded CSV files into the cleaned dataset.
         with open(path.join(coded_input_directory, "gender.csv"), "r") as f:
             data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
