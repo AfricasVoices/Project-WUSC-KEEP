@@ -5,8 +5,6 @@ name = "pypi"
 
 [packages]
 CoreDataModules = {git = "https://www.github.com/AfricasVoices/CoreDataModules", editable = true, ref = "v0.2.3"}
-jsonpickle = "*"
-python-dateutil = "*"
 
 [dev-packages]
 
