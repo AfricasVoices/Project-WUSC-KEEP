@@ -4,7 +4,7 @@ import os
 from core_data_modules.traced_data.io import TracedDataJsonIO, TracedDataCSVIO
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Cleans a list of TracedData items")
+    parser = argparse.ArgumentParser(description="Cleans a list of TracedData containing radio show messages")
     parser.add_argument("user", help="User launching this program", nargs=1)
     parser.add_argument("input", help="Path to input file, containing a list of TracedData objects as JSON", nargs=1)
     parser.add_argument("json_output", metavar="json-output",
@@ -18,22 +18,12 @@ if __name__ == "__main__":
     json_output_path = args.json_output[0]
     csv_output_path = args.csv_output[0]
 
-    # Time range of messages to keep. Messages outside of this range will be dropped.
-    # Inclusive lower-bound, exclusive upper-bound
-    earliest_time_string = "2018-06-12T20:00:00+03:00"
-    latest_time_string = "2018-06-13T00:00:00+03:00"
-
     # Load data from JSON file
     with open(input_path, "r") as f:
         data = TracedDataJsonIO.import_json_to_traced_data_iterable(f)
 
     # Filter out messages which are only 1 character long
     data = list(filter(lambda td: len(td["Message"]) > 1, data))
-
-    # Filter out messages received outwith the desired time range
-    earliest_time = isoparse(earliest_time_string)
-    latest_time = isoparse(latest_time_string)
-    data = list(filter(lambda td: earliest_time <= isoparse(td["Date"]) < latest_time, data))
 
     # Write json output
     if os.path.dirname(json_output_path) is not "" and not os.path.exists(os.path.dirname(json_output_path)):
