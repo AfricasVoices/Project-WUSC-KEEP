@@ -8,9 +8,9 @@ if [ $# -ne 4 ]; then
 fi
 
 USER=$1
-INPUT_FILE=$2
-OUTPUT_FILE=$3
-INTERFACE_DIR=$4
+INPUT_JSON=$2
+OUTPUT_JSON=$3
+OUTPUT_CSV=$4
 
 # Build an image for this project, called "wusc-keep-messages".
 docker build -t wusc-keep-messages .
@@ -25,11 +25,11 @@ function finish {
 trap finish EXIT
 
 # Copy input data into the container
-docker cp "$INPUT_FILE" "$container:/app/data/input.json"
+docker cp "$INPUT_JSON" "$container:/app/data/input.json"
 
 # Run the image as a container.
 docker start -a -i "$container"
 
 # Copy the output data back out of the container
-docker cp "$container:/app/data/output.json" "$OUTPUT_FILE"
-docker cp "$container:/app/data/interface_export" "$INTERFACE_DIR"
+docker cp "$container:/app/data/output.json" "$OUTPUT_JSON"
+docker cp "$container:/app/data/output.csv" "$OUTPUT_CSV"
