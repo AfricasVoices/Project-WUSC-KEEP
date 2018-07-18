@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-CoreDataModules = {git = "https://www.github.com/AfricasVoices/CoreDataModules", editable = true, ref = "v0.2.3"}
+CoreDataModules = {git = "https://www.github.com/AfricasVoices/CoreDataModules", editable = true, ref = "4ebb34af72eba3594c540408996b1a22b5c94ad2"} # TODO: Update to a short-ref when PR in CoreDataModules is closed
 
 [dev-packages]
 
