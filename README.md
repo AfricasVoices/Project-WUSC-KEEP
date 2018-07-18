@@ -27,7 +27,7 @@ To configure this:
    $ pipenv sync
    ```
    
-1. Wen using the fetch scripts in `run_scripts/`, set the `<echo-mobile-root>` argument to the absolute path 
+1. When using the fetch scripts in `run_scripts/`, set the `<echo-mobile-root>` argument to the absolute path 
    to the directory just cloned. For example:
 
    `$ sh 01_fetch_messages.sh test_user /Users/test_user/EchoMobileExperiments ...`
