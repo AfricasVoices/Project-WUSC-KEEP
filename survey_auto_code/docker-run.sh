@@ -2,22 +2,23 @@
 
 set -e
 
-if [ $# -ne 5 ]; then
-    echo "Usage: sh docker-run.sh <user> <input-file> <output-file> <coding-mode> <coding-directory>"
+if [ $# -ne 6 ]; then
+    echo "Usage: sh docker-run.sh <user> <input-file> <language> <output-file> <coding-mode> <coding-directory>"
     exit
 fi
 
 USER=$1
 INPUT_FILE=$2
-OUTPUT_FILE=$3
-CODING_MODE=$4
-CODING_DIR=$5
+LANGUAGE=$3
+OUTPUT_FILE=$4
+CODING_MODE=$5
+CODING_DIR=$6
 
 # Build an image for this project, called "wusc-keep-auto-code".
 docker build -t wusc-keep-auto-code .
 
 # Create a container from the image that was just built.
-container="$(docker container create --env USER="$USER" --env CODING_MODE="$CODING_MODE" wusc-keep-auto-code)"
+container="$(docker container create --env USER="$USER" --env LANGUAGE="$LANGUAGE" --env CODING_MODE="$CODING_MODE" wusc-keep-auto-code)"
 
 function finish {
     # Tear down the container when done.
