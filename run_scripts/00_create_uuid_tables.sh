@@ -2,8 +2,8 @@
 
 set -e
 
-if [ $# -ne 2 ]; then
-    echo "Usage: sh 01_fetch_messages.sh <echo-mobile-root> <data-root>"
+if [ $# -ne 1 ]; then
+    echo "Usage: sh 01_fetch_messages.sh <data-root>"
     echo "Writes empty UUID tables for phone numbers and messages."
     exit
 fi
