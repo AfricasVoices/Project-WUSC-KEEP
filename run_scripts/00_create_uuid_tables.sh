@@ -8,8 +8,7 @@ if [ $# -ne 1 ]; then
     exit
 fi
 
-EM_DIR=$1
-DATA_DIR=$2
+DATA_DIR=$1
 
 mkdir -p "$DATA_DIR/00 UUIDs"
 
