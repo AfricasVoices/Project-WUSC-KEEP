@@ -20,6 +20,9 @@ SURVEYS=(
     "Demog Survey_ATA_English" english
     "Demog Survey_ATA_Swahili" swahili
     "Demog Survey_ATA_Turkana" turkana
+
+    "Demog Survey_BIBLIA_Swahili" swahili
+    "Demog Survey_BIBLIA_Turkana" turkana
     )
 
 for i in $(seq 0 $((${#SURVEYS[@]} / 2 - 1))) # for i in range(0, len(SHOWS) / 2)
