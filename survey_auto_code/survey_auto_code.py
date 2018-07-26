@@ -72,13 +72,21 @@ if __name__ == "__main__":
             TracedDataCodaIO.export_traced_data_iterable_to_coda_with_scheme(
                 data, "AGE_R", "AGE_R_clean", "Age", f)
 
-        with open(path.join(coded_output_directory, "location.csv"), "w") as f:
-            TracedDataCodaIO.export_traced_data_iterable_to_coda(
-                data, "LOCATION_R", f)
-
-        with open(path.join(coded_output_directory, "nationality.csv"), "w") as f:
-            TracedDataCodaIO.export_traced_data_iterable_to_coda(
-                data, "NATIONALITY_R", f)
+        # ATA uses LOCATION/NATIONALITY whereas BIBLIA uses LOCATION 1/LOCATION 2
+        if len(data) > 0 and "LOCATION_R" in data[0]:
+            with open(path.join(coded_output_directory, "location.csv"), "w") as f:
+                TracedDataCodaIO.export_traced_data_iterable_to_coda(
+                    data, "LOCATION_R", f)
+            with open(path.join(coded_output_directory, "nationality.csv"), "w") as f:
+                TracedDataCodaIO.export_traced_data_iterable_to_coda(
+                    data, "NATIONALITY_R", f)
+        else:
+            with open(path.join(coded_output_directory, "location 1.csv"), "w") as f:
+                TracedDataCodaIO.export_traced_data_iterable_to_coda(
+                    data, "LOCATION 1_R", f)
+            with open(path.join(coded_output_directory, "location 2.csv"), "w") as f:
+                TracedDataCodaIO.export_traced_data_iterable_to_coda(
+                    data, "LOCATION 2_R", f)
     else:
         # Write Coding CSV output
         if not os.path.exists(coded_output_directory):
@@ -92,10 +100,18 @@ if __name__ == "__main__":
             TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
                 data, "AGE_R", "AGE_R_clean", f)
 
-        with open(path.join(coded_output_directory, "location.csv"), "w") as f:
-            TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
-                data, "LOCATION_R", "LOCATION_R_clean", f)
-
-        with open(path.join(coded_output_directory, "nationality.csv"), "w") as f:
-            TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
-                data, "NATIONALITY_R", "NATIONALITY_R_clean", f)
+        # ATA uses LOCATION/NATIONALITY whereas BIBLIA uses LOCATION 1/LOCATION 2
+        if len(data) > 0 and "LOCATION_R" in data[0]:
+            with open(path.join(coded_output_directory, "location.csv"), "w") as f:
+                TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
+                    data, "LOCATION_R", "LOCATION_R_clean", f)
+            with open(path.join(coded_output_directory, "nationality.csv"), "w") as f:
+                TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
+                    data, "NATIONALITY_R", "NATIONALITY_R_clean", f)
+        else:
+            with open(path.join(coded_output_directory, "location 1.csv"), "w") as f:
+                TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
+                    data, "LOCATION 1_R", "LOCATION 1_R_clean", f)
+            with open(path.join(coded_output_directory, "location 2.csv"), "w") as f:
+                TracedDataCodingCSVIO.export_traced_data_iterable_to_coding_csv_with_scheme(
+                    data, "LOCATION 2_R", "LOCATION 2_R_clean", f)

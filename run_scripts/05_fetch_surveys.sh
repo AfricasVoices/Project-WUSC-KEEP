@@ -24,6 +24,9 @@ SURVEYS=(
     "Demog Survey_ATA_English"
     "Demog Survey_ATA_Swahili"
     "Demog Survey_ATA_Turkana"
+
+    "Demog Survey_BIBLIA_Swahili"
+    "Demog Survey_BIBLIA_Turkana"
     )
 
 for SURVEY in "${SURVEYS[@]}"
