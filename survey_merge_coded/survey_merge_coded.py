@@ -37,13 +37,22 @@ if __name__ == "__main__":
             data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
                 user, data, "AGE_R", "AGE_R_clean", f, True))
 
-        with open(path.join(coded_input_directory, "location.csv"), "r") as f:
-            data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
-                user, data, "LOCATION_R", "LOCATION_R_clean", f, True))
+        if len(data) > 0 and "LOCATION_R" in data[0]:
+            with open(path.join(coded_input_directory, "location.csv"), "r") as f:
+                data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
+                    user, data, "LOCATION_R", "LOCATION_R_clean", f, True))
 
-        with open(path.join(coded_input_directory, "nationality.csv"), "r") as f:
-            data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
-                user, data, "NATIONALITY_R", "NATIONALITY_R_clean", f, True))
+            with open(path.join(coded_input_directory, "nationality.csv"), "r") as f:
+                data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
+                    user, data, "NATIONALITY_R", "NATIONALITY_R_clean", f, True))
+        else:
+            with open(path.join(coded_input_directory, "location 1.csv"), "r") as f:
+                data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
+                    user, data, "LOCATION 1_R", "LOCATION 1_R_clean", f, True))
+
+            with open(path.join(coded_input_directory, "location 2.csv"), "r") as f:
+                data = list(TracedDataCodaIO.import_coda_to_traced_data_iterable(
+                    user, data, "LOCATION 2_R", "LOCATION 2_R_clean", f, True))
     else:
         assert coding_mode == "coding-csv", "coding_mode was not one of 'coda' or 'coding-csv'"
         # Merge manually coded CSV files into the cleaned dataset.
@@ -55,13 +64,24 @@ if __name__ == "__main__":
             data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
                 user, data, "AGE_R", "AGE_R_clean", "AGE_R", "AGE_R_clean", f, True))
 
-        with open(path.join(coded_input_directory, "location.csv"), "r") as f:
-            data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
-                user, data, "LOCATION_R", "LOCATION_R_clean", "LOCATION_R", "LOCATION_R_clean", f, True))
+        if len(data) > 0 and "LOCATION_R" in data[0]:
+            with open(path.join(coded_input_directory, "location.csv"), "r") as f:
+                data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
+                    user, data, "LOCATION_R", "LOCATION_R_clean", "LOCATION_R", "LOCATION_R_clean", f, True))
 
-        with open(path.join(coded_input_directory, "nationality.csv"), "r") as f:
-            data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
-                user, data, "NATIONALITY_R", "NATIONALITY_R_clean", "NATIONALITY_R", "NATIONALITY_R_clean", f, True))
+            with open(path.join(coded_input_directory, "nationality.csv"), "r") as f:
+                data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
+                    user, data, "NATIONALITY_R", "NATIONALITY_R_clean", "NATIONALITY_R", "NATIONALITY_R_clean", f,
+                    True))
+        else:
+            with open(path.join(coded_input_directory, "location 1.csv"), "r") as f:
+                data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
+                    user, data, "LOCATION 1_R", "LOCATION 1_R_clean", "LOCATION 1_R", "LOCATION 1_R_clean", f, True))
+
+            with open(path.join(coded_input_directory, "location 2.csv"), "r") as f:
+                data = list(TracedDataCodingCSVIO.import_coding_csv_to_traced_data_iterable(
+                    user, data, "LOCATION 2_R", "LOCATION 2_R_clean", "LOCATION 2_R", "LOCATION 2_R_clean", f,
+                    True))
 
     # Write coded data back out to disk
     if os.path.dirname(json_output_path) is not "" and not os.path.exists(os.path.dirname(json_output_path)):
