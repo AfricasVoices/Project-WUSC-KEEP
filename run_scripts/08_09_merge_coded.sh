@@ -3,7 +3,7 @@
 set -e
 
 if [ $# -ne 2 ]; then
-    echo "Usage: sh 09_merge_coded.sh <user> <data-root>"
+    echo "Usage: sh 08_09_merge_coded.sh <user> <data-root>"
     echo "Applies manually verified/assigned codes from coding csvs to the surveys."
     exit
 fi
